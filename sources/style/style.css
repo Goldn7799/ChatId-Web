@@ -166,3 +166,119 @@ body {
   -ms-transform: scale(1.05, 1.05) translateY(-6px);
   -o-transform: scale(1.05, 1.05) translateY(-6px);
 }
+
+.slideUp {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  margin-top: -100vh;
+  animation-name: slideUp;
+  animation-duration: 1.25s;
+  background-color: rgb(94,132,208);
+  background-image: url(../assets/rocket.gif);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center center;
+}
+
+.slideUpClose {
+  position: fixed;
+  opacity: 0;
+  height: 150%;
+  width: 100%;
+  top: 50%;
+  transform: translate(-50%);
+  animation-name: slideUpClose;
+  animation-duration: 1.8s;
+  background-color: rgb(94,132,208);
+  background-image: url(../assets/rocket.gif);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center center;
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  -o-transform: translate(-50%);
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+    background-image: none;
+    background-color: white;
+    -webkit-transform: translateY(100%);
+    -moz-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    -o-transform: translateY(100%);
+  }
+  50% {
+    transform: translateY(65%);
+    background-image: none;
+    -webkit-transform: translateY(65%);
+    -moz-transform: translateY(65%);
+    -ms-transform: translateY(65%);
+    -o-transform: translateY(65%);
+}
+  80% {
+    transform: translateY(65%);
+    background-image: none;
+    background-color: white;
+    -webkit-transform: translateY(65%);
+    -moz-transform: translateY(65%);
+    -ms-transform: translateY(65%);
+    -o-transform: translateY(65%);
+}
+  90% {
+    transform: translateY(0);
+    background-image: none;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+}
+  95% {
+    background-color: rgb(94,132,208);
+  }
+  100% {
+    background-image: url(../assets/rocket.gif);
+  }
+}
+
+@keyframes slideUpClose {
+  0% {
+    opacity: 1;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+  60% {
+    opacity: 1;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+  90% {
+    opacity: 1;
+    transform: translateY(-150%);
+    background-color: rgb(94,132,208);
+    background-image: url(../assets/rocket.gif);
+    -webkit-transform: translateY(-150%);
+    -moz-transform: translateY(-150%);
+    -ms-transform: translateY(-150%);
+    -o-transform: translateY(-150%);
+}
+  100% {
+    opacity: 1;
+    transform: translateY(-150%);
+    background-color: rgb(94,132,208);
+    background-image: url(../assets/rocket.gif);
+    -webkit-transform: translateY(-150%);
+    -moz-transform: translateY(-150%);
+    -ms-transform: translateY(-150%);
+    -o-transform: translateY(-150%);
+}
+}

@@ -40,6 +40,13 @@ const page = {
       loginGoogle()
     })
   },
+  loginAnimate: ()=>{
+    root.innerHTML += '<div class="slideUp"></div>'
+    setTimeout(() => {
+      page.home()
+      root.innerHTML += '<div class="slideUpClose"></div>'
+    }, 2000);
+  },
   home: ()=>{
     setPage('home')
     checkUser(credUser.data.uid)
@@ -135,7 +142,12 @@ setInterval(() => {
       if (credUser.isLogin) {
         // Go Home
         if (!pageState.home) {
-          page.home()
+          if (pageState.login) {
+            page.loginAnimate()
+            setPage('home')
+          } else {
+            page.home()
+          }
         };
       } else {
         // Go Login
