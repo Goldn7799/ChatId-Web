@@ -77,7 +77,7 @@ const page = {
       isLastLogin = true
     };
     setPage('home')
-    if ((await checkUser(credUser.data.uid))) return page.newUserWelcome()
+    if (!(await checkUser(credUser.data.uid))) return page.newUserWelcome()
     if (pageStateCurrent.homeAnimate) {
       root.innerHTML = '<div id="slideUpClose"></div>'
       pageStateCurrent.homeAnimate = false
