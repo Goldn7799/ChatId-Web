@@ -55,11 +55,13 @@ const page = {
     root.innerHTML = `
       <div id="newUserWelcomeTransition"></div>
       <div class="newUser">
+        <div class="space"></div>
         <h2>Selamat Datang Di <span class="logoText">Chat <span>ID</span></span></h2>
         <img src="./sources/assets/welcomeHappy.svg" alt="Welcome Image">
         <p>Mari nikmati sejumlah fitur dan animasi yang fresh yang dibuat oleh Devloper untuk Pengguna</p>
         <p>Trimakasih telah menggunakkan aplikasi kami sebagai sarana Komunikasi</p>
         <button id="startBtn" class="btn btn-primary">Mari Mulai</button>
+        <div class="space"></div>
       </div>
     `
     setTimeout(() => {
@@ -75,7 +77,7 @@ const page = {
       isLastLogin = true
     };
     setPage('home')
-    if (!(await checkUser(credUser.data.uid))) return page.newUserWelcome()
+    if ((await checkUser(credUser.data.uid))) return page.newUserWelcome()
     if (pageStateCurrent.homeAnimate) {
       root.innerHTML = '<div id="slideUpClose"></div>'
       pageStateCurrent.homeAnimate = false
@@ -86,7 +88,7 @@ const page = {
       root.innerHTML = ''
     }
     root.innerHTML += `
-      <div id="homePage" ${(!isLastLogin) ? 'class="fadeAnimation"':''}>
+      <div id="homePage" ${(!isLastLogin || !pageStateCurrent.homeAnimate) ? 'class="fadeAnimation"':''}>
         <center><h4>Home</h4></center>
       </div>
     `

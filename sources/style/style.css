@@ -309,11 +309,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.newUser .space {
+  flex-grow: 1;
 }
 
 .newUser img {
-  height: 42%;
-  width: 42%;
+  height: 62%;
+  width: 62%;
   margin-bottom: 18px;
 }
 
