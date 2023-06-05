@@ -17,10 +17,13 @@ let credUser = {
 
 // Page Element
 let pageState = {}
+let pageStateCurrent = {
+  homeAnimate: false
+}
 const setPage = (pageName) => {
   pageState = {
     home: false,
-    login: false
+    login: false,
   }
   pageState[pageName] = true
 }
@@ -31,7 +34,7 @@ const page = {
       <div class="loginFormContainer">
         <div class="loginForm">
           <h4>Login dengan sekali klik</h4>
-          <img src="./sources/assets/sign_up.svg">
+          <img src="./sources/assets/sign_up.svg" alt="loginImage">
           <button id="googleLogin" type="button" class="GoogleBtn-Login"><img src="./sources/assets/Google.webp"><span>Google</span></button>
         </div>
       </div>
@@ -42,16 +45,50 @@ const page = {
   },
   loginAnimate: ()=>{
     root.innerHTML += '<div class="slideUp"></div>'
+    pageStateCurrent.homeAnimate = true
     setTimeout(() => {
       page.home()
-      root.innerHTML += '<div class="slideUpClose"></div>'
     }, 2000);
   },
-  home: ()=>{
+  newUserWelcome: ()=>{
     setPage('home')
-    checkUser(credUser.data.uid)
     root.innerHTML = `
-      Home
+      <div id="newUserWelcomeTransition"></div>
+      <div class="newUser">
+        <h2>Selamat Datang Di <span class="logoText">Chat <span>ID</span></span></h2>
+        <img src="./sources/assets/welcomeHappy.svg" alt="Welcome Image">
+        <p>Mari nikmati sejumlah fitur dan animasi yang fresh yang dibuat oleh Devloper untuk Pengguna</p>
+        <p>Trimakasih telah menggunakkan aplikasi kami sebagai sarana Komunikasi</p>
+        <button id="startBtn" class="btn btn-primary">Mari Mulai</button>
+      </div>
+    `
+    setTimeout(() => {
+      document.getElementById('newUserWelcomeTransition').style.display = 'none'
+    }, 3250);
+    document.getElementById('startBtn').addEventListener('click', ()=>{
+      page.loginAnimate()
+    })
+  },
+  home: async ()=>{
+    let isLastLogin = false;
+    if (pageState.login) {
+      isLastLogin = true
+    };
+    setPage('home')
+    if (!(await checkUser(credUser.data.uid))) return page.newUserWelcome()
+    if (pageStateCurrent.homeAnimate) {
+      root.innerHTML = '<div id="slideUpClose"></div>'
+      pageStateCurrent.homeAnimate = false
+      setTimeout(() => {
+        document.getElementById('slideUpClose').style.display = 'none'
+      }, 3250);
+    } else {
+      root.innerHTML = ''
+    }
+    root.innerHTML += `
+      <div id="homePage" ${(!isLastLogin) ? 'class="fadeAnimation"':''}>
+        <center><h4>Home</h4></center>
+      </div>
     `
   }
 }
@@ -161,16 +198,19 @@ setInterval(() => {
 
 // Fetch Area
 const checkUser = (id) => {
-  fetch(`${firebaseDb.API}/users/check/${id}/${credUser.data.email}`)
-  .then(rawRes => { return rawRes.json() })
-  .then(res => { credUser.isOldUser = res.success })
-  .catch(() => {
-    Notipin.Alert({
-      msg: "Server UnReachable", // Pesan kamu
-      yes: "Ok", // Tulisan di tombol 'Yes'
-      onYes: () => { window.location.reload() },
-      type: "DANGER",
-      mode: "DARK",
+  return new Promise((resolve) => {
+    fetch(`${firebaseDb.API}/users/check/${id}/${credUser.data.email}`)
+    .then(rawRes => { return rawRes.json() })
+    .then(res => { credUser.isOldUser = res.success; resolve(res.success) })
+    .catch(() => {
+      Notipin.Alert({
+        msg: "Server UnReachable", // Pesan kamu
+        yes: "Ok", // Tulisan di tombol 'Yes'
+        onYes: () => { window.location.reload() },
+        type: "DANGER",
+        mode: "DARK",
+      })
     })
   })
+  
 }

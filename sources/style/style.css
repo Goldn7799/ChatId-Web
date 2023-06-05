@@ -189,7 +189,7 @@ body {
   -o-transform: translateY(-50%);
 }
 
-.slideUpClose {
+#slideUpClose {
   position: fixed;
   opacity: 0;
   height: 100%;
@@ -303,4 +303,135 @@ body {
     -ms-transform: translateY(-150%);
     -o-transform: translateY(-150%);
 }
+}
+
+.newUser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.newUser img {
+  height: 42%;
+  width: 42%;
+  margin-bottom: 18px;
+}
+
+.newUser h2 {
+  font-weight: bold;
+  color: rgb(156, 150, 255);
+}
+
+.newUser p {
+  margin-top: -18px;
+}
+
+.logoText {
+  font-weight: 800;
+  color: white;
+}
+
+.logoText span {
+  color: rgb(255, 41, 41);
+}
+
+#newUserWelcomeTransition {
+  position: fixed;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  animation-name: newUserWelcomeTransition;
+  animation-duration: 3s;
+  background-color: rgb(252,68,68);
+  background-image: url(../assets/welcomeAnimate.gif);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center center;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
+
+@keyframes newUserWelcomeTransition {
+  0% {
+    opacity: 1;
+    transform: translateY(-50%);
+    background-color: rgb(55,71,239);
+    background-image: url(../assets/rocket.gif);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+  25% {
+    opacity: 1;
+    transform: translateY(-50%);
+    background-color: rgb(252,68,68);
+    background-image: url(../assets/welcomeAnimate.gif);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-50%);
+    background-color: rgb(252,68,68);
+    background-image: url(../assets/welcomeAnimate.gif);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+  90% {
+    opacity: 1;
+    transform: translateY(-150%);
+    background-color: rgb(252,68,68);
+    background-image: url(../assets/welcomeAnimate.gif);
+    -webkit-transform: translateY(-150%);
+    -moz-transform: translateY(-150%);
+    -ms-transform: translateY(-150%);
+    -o-transform: translateY(-150%);
+}
+  100% {
+    opacity: 1;
+    transform: translateY(-150%);
+    background-color: rgb(252,68,68);
+    background-image: url(../assets/welcomeAnimate.gif);
+    -webkit-transform: translateY(-150%);
+    -moz-transform: translateY(-150%);
+    -ms-transform: translateY(-150%);
+    -o-transform: translateY(-150%);
+}
+}
+
+.fadeAnimation {
+  animation-duration: 1.25s;
+  animation-name: fadeAnimation;
+}
+
+@keyframes fadeAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeAnimationClose {
+  animation-duration: 1.25s;
+  animation-name: fadeAnimationClose;
+}
+
+@keyframes fadeAnimationClose {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
