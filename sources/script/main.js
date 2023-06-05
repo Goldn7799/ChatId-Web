@@ -12,7 +12,8 @@ let credUser = {
   isReady: false,
   isOldUser: false,
   data: {},
-  google: {}
+  google: {},
+  eData: {}
 }
 
 // Page Element
@@ -51,7 +52,6 @@ const page = {
     }, 2000);
   },
   newUserWelcome: ()=>{
-    setPage('home')
     root.innerHTML = `
       <div id="newUserWelcomeTransition"></div>
       <div class="newUser">
@@ -89,7 +89,12 @@ const page = {
     }
     root.innerHTML += `
       <div id="homePage" ${(!isLastLogin || !pageStateCurrent.homeAnimate) ? 'class="fadeAnimation"':''}>
-        <center><h4>Home</h4></center>
+        <nav class="homeNavbar">
+          <img src="${firebaseDb.API}/user/profile/${credUser.data.uid}">
+          <h6>${credUser.eData.DisplayName}</h6>
+          <span class="flexSparator"></span>
+          <button class="elipsBtn"><i class="fa-solid fa-lg fa-ellipsis-vertical"></i></button>
+        </nav>
       </div>
     `
   }
@@ -203,7 +208,7 @@ const checkUser = (id) => {
   return new Promise((resolve) => {
     fetch(`${firebaseDb.API}/users/check/${id}/${credUser.data.email}`)
     .then(rawRes => { return rawRes.json() })
-    .then(res => { credUser.isOldUser = res.success; resolve(res.success) })
+    .then(res => { credUser.isOldUser = res.success; credUser.eData = res.data;resolve(res.success) })
     .catch(() => {
       Notipin.Alert({
         msg: "Server UnReachable", // Pesan kamu
