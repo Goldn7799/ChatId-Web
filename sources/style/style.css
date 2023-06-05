@@ -191,9 +191,9 @@ body {
   top: 50%;
   transform: translate(-50%);
   animation-name: slideUpClose;
-  animation-duration: 1.8s;
+  animation-duration: 3s;
   background-color: rgb(94,132,208);
-  background-image: url(../assets/rocket.gif);
+  background-image: url(../assets/logoAnimate.gif);
   background-repeat: no-repeat;
   background-size: 50%;
   background-position: center center;
@@ -250,14 +250,28 @@ body {
   0% {
     opacity: 1;
     transform: translateY(-50%);
+    background-color: rgb(94,132,208);
+    background-image: url(../assets/rocket.gif);
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
 }
+  25% {
+    opacity: 1;
+    transform: translateY(-50%);
+    background-color: rgb(55,71,239);
+    background-image: url(../assets/logoAnimate.gif);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+  }
   60% {
     opacity: 1;
     transform: translateY(-50%);
+    background-color: rgb(55,71,239);
+    background-image: url(../assets/logoAnimate.gif);
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
@@ -266,8 +280,8 @@ body {
   90% {
     opacity: 1;
     transform: translateY(-150%);
-    background-color: rgb(94,132,208);
-    background-image: url(../assets/rocket.gif);
+    background-color: rgb(55,71,239);
+    background-image: url(../assets/logoAnimate.gif);
     -webkit-transform: translateY(-150%);
     -moz-transform: translateY(-150%);
     -ms-transform: translateY(-150%);
@@ -276,8 +290,8 @@ body {
   100% {
     opacity: 1;
     transform: translateY(-150%);
-    background-color: rgb(94,132,208);
-    background-image: url(../assets/rocket.gif);
+    background-color: rgb(55,71,239);
+    background-image: url(../assets/logoAnimate.gif);
     -webkit-transform: translateY(-150%);
     -moz-transform: translateY(-150%);
     -ms-transform: translateY(-150%);
