@@ -93,10 +93,26 @@ const page = {
           <img src="${firebaseDb.API}/user/profile/${credUser.data.uid}">
           <h6>${credUser.eData.DisplayName}</h6>
           <span class="flexSparator"></span>
-          <button class="elipsBtn"><i class="fa-solid fa-lg fa-ellipsis-vertical"></i></button>
+          <button class="elipsBtn" id="elipsBtn"><i class="fa-solid fa-lg fa-ellipsis-vertical"></i></button>
         </nav>
+        <div class="itemElips itemElipsClose" id="itemElips">
+          <div class="arrowUp"></div>
+          <div id="elipsSelection"></div>
+        </div>
       </div>
     `
+    let elipsSwitch = false
+    document.getElementById('elipsBtn').addEventListener('click', ()=>{
+      if (elipsSwitch) {
+        elipsSwitch = false
+        document.getElementById('itemElips').classList.remove('itemElipsOpen')
+        document.getElementById('itemElips').classList.add('itemElipsClose')
+      } else {
+        elipsSwitch = true
+        document.getElementById('itemElips').classList.add('itemElipsOpen')
+        document.getElementById('itemElips').classList.remove('itemElipsClose')
+      }
+    })
   }
 }
 

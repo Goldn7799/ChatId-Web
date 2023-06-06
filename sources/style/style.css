@@ -171,6 +171,7 @@ body {
 
 .slideUp {
   position: fixed;
+  z-index: 1000;
   height: 100%;
   width: 100%;
   /* margin-top: -100vh; */
@@ -191,6 +192,7 @@ body {
 
 #slideUpClose {
   position: fixed;
+  z-index: 1000;
   opacity: 0;
   height: 100%;
   width: 100%;
@@ -343,6 +345,7 @@ body {
 
 #newUserWelcomeTransition {
   position: fixed;
+  z-index: 1000;
   opacity: 0;
   height: 100%;
   width: 100%;
@@ -449,6 +452,7 @@ body {
 .homeNavbar {
   display: flex;
   position: fixed;
+  z-index: 100;
   flex-direction: row;
   align-items: center;
   margin: 8px;
@@ -506,4 +510,95 @@ body {
   background-color: rgba(255, 255, 255, 0.219);
   box-shadow: 0px 0px 5px 1px white;
   color: rgb(255, 255, 255);
+}
+
+#elipsSelection {
+  display: flex;
+  background-color: rgb(34, 34, 34);
+  height: 90%;
+  width: 86%;
+  border-radius: 10px 0px 10px 10px;
+  margin-left: 13.9%;
+  margin-top: -10px;
+  -webkit-border-radius: 10px 0px 10px 10px;
+  -moz-border-radius: 10px 0px 10px 10px;
+  -ms-border-radius: 10px 0px 10px 10px;
+  -o-border-radius: 10px 0px 10px 10px;
+}
+
+.arrowUp {
+  width: 0;
+  height: 0;
+  border-top: 0px solid transparent;
+  border-bottom: 18px solid transparent;
+  border-right: 18px solid rgb(34, 34, 34);
+  transform: rotate(-46.5deg);
+  margin-left: 92%;
+  margin-bottom: -10px;
+  -webkit-transform: rotate(-46.5deg);
+  -moz-transform: rotate(-46.5deg);
+  -ms-transform: rotate(-46.5deg);
+  -o-transform: rotate(-46.5deg);
+  -webkit-transform: rotate(-46deg);
+}
+
+.itemElips {
+  z-index: 95;
+  position: fixed;
+  right: 0;
+  margin: 12px;
+  margin-top: 68px;
+  height: 22%;
+  width: 24%;
+}
+
+.itemElipsOpen {
+  animation-name: itemElipsOpen;
+  animation-duration: 0.5s;
+}
+
+@keyframes itemElipsOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-100px) scale(0,0);
+    margin-right: -110px;
+    -webkit-transform: translateY(-100px) scale(0,0);
+    -moz-transform: translateY(-100px) scale(0,0);
+    -ms-transform: translateY(-100px) scale(0,0);
+    -o-transform: translateY(-100px) scale(0,0);
+}
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1,1);
+    -webkit-transform: translateY(0) scale(1,1);
+    -moz-transform: translateY(0) scale(1,1);
+    -ms-transform: translateY(0) scale(1,1);
+    -o-transform: translateY(0) scale(1,1);
+}
+}
+
+.itemElipsClose {
+  opacity: 0;
+  animation-name: itemElipsClose;
+  animation-duration: 0.5s;
+}
+
+@keyframes itemElipsClose {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1,1);
+    -webkit-transform: translateY(0) scale(1,1);
+    -moz-transform: translateY(0) scale(1,1);
+    -ms-transform: translateY(0) scale(1,1);
+    -o-transform: translateY(0) scale(1,1);
+}
+  to {
+    opacity: 0;
+    transform: translateY(-100px) scale(0,0);
+    margin-right: -110px;
+    -webkit-transform: translateY(-100px) scale(0,0);
+    -moz-transform: translateY(-100px) scale(0,0);
+    -ms-transform: translateY(-100px) scale(0,0);
+    -o-transform: translateY(-100px) scale(0,0);
+}
 }
