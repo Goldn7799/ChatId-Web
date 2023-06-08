@@ -172,7 +172,7 @@ const page = {
             <div class="thisChat" id="global">
               <img src="${(chatId.includes('-')) ? `${firebaseDb.API}/user/profile/${(chatId.split('-')).filter(id => id !== credUser.data.uid)}` : `${firebaseDb.API}/group/profile/${chatId}`}" alt="blank Group">
               <div class="chatInfo">
-                <h8>${selected.Name}</h8>
+                <h8>${((selected.Name).includes('-')) ? (await getUsername((chatId.split('-')).filter(id => id !== credUser.data.uid))).DisplayName : selected.Name}</h8>
                 <p ${(!selected.LastChat) ? 'style="opacity: 0;"' : ''}>${(await getUsername(selected.LastChat?.From))?.DisplayName}: ${(selected.LastChat?.Type === 'text') ? selected.LastChat?.Body : selected.LastChat?.Type}</p>
               </div>
               <div class="chatInfo2">
@@ -338,7 +338,14 @@ const getUsername = (id)=>{
     fetch(`${firebaseDb.API}/users/getUsername/${id}`, { method: 'GET' })
     .then((rawRes) => { return rawRes.json()})
     .then((res) => {
-      resolve(res.data)
+      if (res.success) {
+        resolve(res.data)
+      } else {
+        resolve({
+          DisplayName: 'Deleted User',
+          UserName: 'deleted_user'
+        })
+      }
     })
     .catch(()=> {
       resolve({

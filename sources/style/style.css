@@ -454,6 +454,7 @@ body {
   position: fixed;
   z-index: 100;
   left: 50%;
+  top: 0;
   transform: translateX(-50%);
   margin-top: 8px;
   flex-direction: row;
@@ -560,6 +561,7 @@ body {
   z-index: 95;
   position: fixed;
   right: 0;
+  top: 0;
   margin: 12px;
   margin-top: 55px;
   padding: 10px;
@@ -620,7 +622,10 @@ body {
 }
 
 #chatListRoom {
-  padding-top: 66px;
+  margin-top: 66px;
+  height: 88vh;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
 }
 
 #chatListRoom .thisChat {
