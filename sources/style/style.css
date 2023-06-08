@@ -453,23 +453,30 @@ body {
   display: flex;
   position: fixed;
   z-index: 100;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
   flex-direction: row;
   align-items: center;
-  margin: 8px;
   border-radius: 5px;
-  background-color: rgba(35, 185, 255, 0.678);
+  background-color: rgba(35, 123, 255, 0.678);
   backdrop-filter: blur(12px);
   padding: 3.5px;
   color: white;
+  width: 98%;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
 }
 
 .homeNavbar img {
-  height: 3.5%;
-  width: 3.5%;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -492,6 +499,9 @@ body {
   margin-right: 5px;
   transition: all ease-in-out 0.25s;
   color: rgb(216, 216, 216);
+  transition: all ease-in-out 0.2s;
+  width: 28px;
+  height: 28px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
@@ -500,10 +510,10 @@ body {
   -moz-transform: scale(1.1, 1.1);
   -ms-transform: scale(1.1, 1.1);
   -o-transform: scale(1.1, 1.1);
-  -webkit-transition: all ease-in-out 0.25s;
-  -moz-transition: all ease-in-out 0.25s;
-  -ms-transition: all ease-in-out 0.25s;
-  -o-transition: all ease-in-out 0.25s;
+  -webkit-transition: all ease-in-out 0.2s;
+  -moz-transition: all ease-in-out 0.2s;
+  -ms-transition: all ease-in-out 0.2s;
+  -o-transition: all ease-in-out 0.2s;
 }
 
 .elipsBtn:hover {
@@ -514,11 +524,14 @@ body {
 
 #elipsSelection {
   display: flex;
-  background-color: rgb(34, 34, 34);
+  background-color: rgba(100, 100, 100, 0.94);
+  flex-direction: column;
+  align-items: center;
   height: 90%;
-  width: 86%;
+  width: 87%;
+  padding: 6px;
   border-radius: 10px 0px 10px 10px;
-  margin-left: 13.9%;
+  margin-left: 18.55%;
   margin-top: -10px;
   -webkit-border-radius: 10px 0px 10px 10px;
   -moz-border-radius: 10px 0px 10px 10px;
@@ -531,9 +544,10 @@ body {
   height: 0;
   border-top: 0px solid transparent;
   border-bottom: 18px solid transparent;
-  border-right: 18px solid rgb(34, 34, 34);
+  border-right: 18px solid rgba(100, 100, 100, 0.94);
+  backdrop-filter: blur(5px);
   transform: rotate(-46.5deg);
-  margin-left: 92%;
+  margin-left: 93.5%;
   margin-bottom: -10px;
   -webkit-transform: rotate(-46.5deg);
   -moz-transform: rotate(-46.5deg);
@@ -547,21 +561,22 @@ body {
   position: fixed;
   right: 0;
   margin: 12px;
-  margin-top: 68px;
-  height: 22%;
-  width: 24%;
+  margin-top: 55px;
+  padding: 10px;
+  margin-right: 1.45%;
+  width: 200px;
 }
 
 .itemElipsOpen {
   animation-name: itemElipsOpen;
-  animation-duration: 0.5s;
+  animation-duration: 0.25s;
 }
 
 @keyframes itemElipsOpen {
   from {
     opacity: 0;
     transform: translateY(-100px) scale(0,0);
-    margin-right: -110px;
+    margin-right: -80px;
     -webkit-transform: translateY(-100px) scale(0,0);
     -moz-transform: translateY(-100px) scale(0,0);
     -ms-transform: translateY(-100px) scale(0,0);
@@ -580,7 +595,8 @@ body {
 .itemElipsClose {
   opacity: 0;
   animation-name: itemElipsClose;
-  animation-duration: 0.5s;
+  margin-top: -100px;
+  animation-duration: 0.25s;
 }
 
 @keyframes itemElipsClose {
@@ -595,10 +611,123 @@ body {
   to {
     opacity: 0;
     transform: translateY(-100px) scale(0,0);
-    margin-right: -110px;
+    margin-right: -80px;
     -webkit-transform: translateY(-100px) scale(0,0);
     -moz-transform: translateY(-100px) scale(0,0);
     -ms-transform: translateY(-100px) scale(0,0);
     -o-transform: translateY(-100px) scale(0,0);
 }
+}
+
+#chatListRoom {
+  padding-top: 66px;
+}
+
+#chatListRoom .thisChat {
+  margin: 10px;
+  background-color: rgb(31, 31, 31);
+  padding: 5px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  animation-name: thisChat;
+  animation-duration: 0.4s;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+@keyframes thisChat {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+    -webkit-transform: translateX(100px);
+    -moz-transform: translateX(100px);
+    -ms-transform: translateX(100px);
+    -o-transform: translateX(100px);
+  }
+  35% {
+    opacity: 0;
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+}
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+  }
+}
+
+#chatListRoom .thisChat:hover {
+  background-color: rgb(54, 54, 54);
+}
+
+#chatListRoom .thisChat img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+#chatListRoom .thisChat .chatInfo {
+  flex-grow: 1;
+  margin-left: 15px;
+  margin-top: -6px;
+}
+
+#chatListRoom .thisChat .chatInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+#chatListRoom .thisChat .chatInfo h8 {
+  font-weight: bold;
+}
+
+#chatListRoom .thisChat .chatInfo p {
+  margin-bottom: -5px;
+  font-size: 14px;
+}
+
+#chatListRoom .thisChat .chatInfo2 {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  margin-top: -6px;
+}
+
+#chatListRoom .thisChat .chatInfo2 p {
+  margin-bottom: -5px;
+}
+
+#chatListRoom .thisChat .chatInfo2 p:last-child {
+  margin-top: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  color: gray;
+}
+
+#chatListRoom .thisChat .chatInfo2 p:first-child {
+  background-color: rgb(0, 102, 255);
+  padding: 0px 6px 0px 6px;
+  border-radius: 10px;
+  font-weight: 540;
+  color: rgb(31, 31, 31);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
