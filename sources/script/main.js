@@ -173,7 +173,7 @@ const page = {
               <img src="${(chatId.includes('-')) ? `${firebaseDb.API}/user/profile/${(chatId.split('-')).filter(id => id !== credUser.data.uid)}` : `${firebaseDb.API}/group/profile/${chatId}`}" alt="blank Group">
               <div class="chatInfo">
                 <h8>${((selected.Name).includes('-')) ? (await getUsername((chatId.split('-')).filter(id => id !== credUser.data.uid))).DisplayName : selected.Name}</h8>
-                <p ${(!selected.LastChat) ? 'style="opacity: 0;"' : ''}>${(await getUsername(selected.LastChat?.From))?.DisplayName}: ${(selected.LastChat?.Type === 'text') ? selected.LastChat?.Body : selected.LastChat?.Type}</p>
+                <p ${(!selected.LastChat) ? 'style="opacity: 0;"' : ''}>${(selected.LastChat?.From === credUser.data.uid) ? 'You' : `~${(await getUsername(selected.LastChat?.From))?.DisplayName}`}: ${(selected.LastChat?.Type === 'text') ? selected.LastChat?.Body : selected.LastChat?.Type}</p>
               </div>
               <div class="chatInfo2">
                 <p ${(selected.UnRead.length === 0) ? 'style="opacity: 0;"' : ''}>${selected.UnRead.length}</p>
@@ -335,7 +335,7 @@ setInterval(() => {
 // Fetch
 const getUsername = (id)=>{
   return new Promise((resolve)=>{
-    fetch(`${firebaseDb.API}/users/getUsername/${id}`, { method: 'GET' })
+    fetch(`${firebaseDb.API}/users/getUsername/${id}/${credUser.data.uid}`, { method: 'GET' })
     .then((rawRes) => { return rawRes.json()})
     .then((res) => {
       if (res.success) {
@@ -349,8 +349,8 @@ const getUsername = (id)=>{
     })
     .catch(()=> {
       resolve({
-        DisplayName: 'Deleted User',
-        UserName: 'deleted_user'
+        DisplayName: 'Loading...',
+        UserName: 'loading...'
       })
     })
   })
